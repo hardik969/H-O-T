@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useCallback, useEffect } from "react";
+import { useLayoutEffect, useRef, useCallback } from "react";
+import Lenis from "lenis";
 import "./ScrollStack.css";
 
 export const ScrollStackItem = ({ children, itemClassName = "" }) => (
@@ -19,7 +20,8 @@ const ScrollStack = ({
   const scrollerRef = useRef(null);
   const cardsRef = useRef([]);
   const cardOffsetsRef = useRef([]);
-  const rafRef = useRef(null);
+  const lenisRef = useRef(null);
+  const animationFrameRef = useRef(null);
 
   const getPxValue = useCallback((value, containerHeight) => {
     return typeof value === "string" ? (parseFloat(value) / 100) * containerHeight : value;
@@ -37,7 +39,6 @@ const ScrollStack = ({
       if (!card) return;
 
       const initialTop = cardOffsetsRef.current[index];
-      if (typeof initialTop !== "number") return;
       const pinTrigger = initialTop - stackPosPx - index * itemStackDistance;
 
       let translateY = 0;
@@ -68,27 +69,6 @@ const ScrollStack = ({
     useWindowScroll,
   ]);
 
-  const refreshOffsets = useCallback(() => {
-    const cards = cardsRef.current;
-    if (!cards.length) return;
-
-    cardOffsetsRef.current = cards.map((card) => {
-      const rect = card.getBoundingClientRect();
-      return rect.top + window.scrollY;
-    });
-
-    updateCardTransforms();
-  }, [updateCardTransforms]);
-
-  const handleScroll = useCallback(() => {
-    if (rafRef.current) return;
-
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null;
-      updateCardTransforms();
-    });
-  }, [updateCardTransforms]);
-
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return undefined;
@@ -116,61 +96,40 @@ const ScrollStack = ({
       card.style.transform = "translateZ(0)";
       card.style.webkitTransform = "translateZ(0)";
     });
-    refreshOffsets();
 
-    return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-    };
-  }, [itemDistance, refreshOffsets]);
-
-  useEffect(() => {
-    const scrollTarget = useWindowScroll ? window : scrollerRef.current;
-    if (!scrollTarget) return undefined;
-
-    const cards = cardsRef.current;
-    const imageElements = cards.flatMap((card) =>
-      Array.from(card.querySelectorAll("img"))
-    );
-
-    const onLoad = () => {
-      refreshOffsets();
-    };
-
-    refreshOffsets();
-    scrollTarget.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", refreshOffsets);
-    window.addEventListener("load", onLoad);
-
-    imageElements.forEach((img) => {
-      if (!img.complete) {
-        img.addEventListener("load", onLoad);
-      }
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1,
     });
 
-    const settleTimer = window.setTimeout(refreshOffsets, 250);
+    lenis.on("scroll", updateCardTransforms);
+
+    const raf = (time) => {
+      lenis.raf(time);
+      animationFrameRef.current = requestAnimationFrame(raf);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(raf);
+    lenisRef.current = lenis;
+    updateCardTransforms();
 
     return () => {
-      scrollTarget.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", refreshOffsets);
-      window.removeEventListener("load", onLoad);
-      imageElements.forEach((img) => {
-        img.removeEventListener("load", onLoad);
-      });
-      window.clearTimeout(settleTimer);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+      }
     };
-  }, [handleScroll, refreshOffsets, useWindowScroll]);
+  }, [itemDistance, updateCardTransforms]);
 
   return (
-    <div
-      className={`scroll-stack-scroller ${useWindowScroll ? "scroll-stack-scroller--window" : ""} ${className}`.trim()}
-      ref={scrollerRef}
-    >
+    <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
       <div className="scroll-stack-inner">
         {children}
-        <div className="scroll-stack-end" style={{ height: "60vh" }} />
+        <div className="scroll-stack-end" style={{ height: "50vh" }} />
       </div>
     </div>
   );
