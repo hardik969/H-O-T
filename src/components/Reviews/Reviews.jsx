@@ -27,8 +27,8 @@ const reviewsData = [
     text: "Finally, a place that gets the Luxury Adrenaline concept right. The forged steel decor and the dark, moody lighting set the perfect stage for a competitive night out with the boys. Bragging rights were claimed!",
     rating: 5,
     image:
-      "https://source.unsplash.com/1400x1800/?industrial,neon,interior,dark&sig=303",
-    alt: "Dark industrial interior with neon lighting",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1400&q=80",
+    alt: "Dark gaming setup with moody lighting",
   },
   {
     id: 4,
