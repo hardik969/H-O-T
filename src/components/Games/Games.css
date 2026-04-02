@@ -1,0 +1,49 @@
+.games-section {
+  background: #111111;
+  padding: 2rem clamp(1rem, 3vw, 2rem) 3rem;
+}
+
+.games-heading {
+  width: min(1200px, 100%);
+  margin: 0 auto 1.5rem;
+  color: #efede8;
+}
+
+.games-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(239, 237, 232, 0.62);
+}
+
+.games-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.games-flow-wrap {
+  height: 600px;
+  position: relative;
+  
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 700px) {
+  .games-section {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .games-heading {
+    margin-bottom: 1rem;
+  }
+
+  .games-flow-wrap {
+    height: 520px;
+    border-radius: 1.5rem;
+  }
+}

@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Abyssinica+SIL&display=swap');
+
+.thrill-hero-wrapper {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #4f0d12 0%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Abyssinica SIL', serif;
+}
+
+.thrill-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px;
+}
+
+/* Main Heading */
+.thrill-main-title {
+  
+  font-size: clamp(60px, 10vw, 140px);
+  font-weight: 400;
+  color: #000;
+  letter-spacing: -2px;
+  margin: 0;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* Polaroid Styling */
+.thrill-polaroid {
+  position: absolute;
+  width: 240px;  
+  background: #fff;
+  height: 280px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 3;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.thrill-polaroid img {
+   width: 100%;
+    height: 100%;
+     border-radius: inherit;
+      corner-shape: inherit;
+       object-position: center center;
+   object-fit: cover;
+
+}
+ 
+/* Precise Corner Positioning */
+.p-top-left {
+  top: -80px;
+  left: 400px;
+  transform: rotate(12deg);
+}
+
+.p-bottom-left {
+  bottom: -50px;
+  left: 30px;
+  transform: rotate(-20deg);
+}
+
+.p-top-right {
+  top: -80px;
+  right: 60px;
+  transform: rotate(-8deg);
+}
+
+.p-bottom-right {
+  bottom: -60px;
+  right: 380px;
+  transform: rotate(-6deg);
+}
+
+/* Central Ornament */
+.thrill-ornament {
+  position: absolute;
+  top: -80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.ornament-icon img {
+  width: 40px;
+  height: auto;
+}
+
+.thrill-ornament p {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* Footer Credits */
+.thrill-credits {
+  position: absolute;
+  bottom: 60px;
+  right: 40px;
+  width: 320px;
+  text-align: right;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+  .thrill-hero-wrapper {
+    min-height: 100svh;
+    padding-top: 5.5rem;
+  }
+
+  .thrill-container {
+    width: 100%;
+    padding: 5.5rem 1rem 7rem;
+  }
+
+  .thrill-main-title {
+    text-align: center;
+    line-height: 0.88;
+    letter-spacing: -1px;
+  }
+
+  .thrill-polaroid {
+    width: 104px;
+    height: 132px;
+  }
+
+  .p-top-left {
+    top: -18px;
+    left: 6px;
+  }
+
+  .p-bottom-left {
+    bottom: -14px;
+    left: 2px;
+  }
+
+  .p-top-right {
+    top: -10px;
+    right: 8px;
+  }
+
+  .p-bottom-right {
+    right: 8px;
+    bottom: -18px;
+  }
+
+  .thrill-ornament {
+    top: 1rem;
+  }
+
+  .thrill-credits {
+    width: auto;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    padding: 0 1rem;
+    text-align: center;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 540px) {
+  .thrill-main-title {
+    font-size: clamp(3.4rem, 18vw, 5rem);
+  }
+
+  .thrill-polaroid {
+    width: 82px;
+    height: 104px;
+  }
+}

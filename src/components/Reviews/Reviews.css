@@ -1,0 +1,244 @@
+.reviews-section {
+  background: #0f0f0f;
+  color: #fff;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  width: min(1800px, 100%);
+  margin: 0 auto;
+}
+
+.reviews-image-side {
+  height: 84vh;
+  overflow: hidden;
+  padding-left: clamp(1rem, 3vw, 2rem);
+}
+
+.review-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2rem;
+  animation: reviewImageReveal 0.65s ease both;
+}
+
+.main-review-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(108%);
+  animation: reviewImageFloat 0.85s ease both;
+}
+
+.review-image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.35)),
+    linear-gradient(90deg, rgba(15, 15, 15, 0), rgba(15, 15, 15, 0.18));
+}
+
+.reviews-content-side {
+  padding: 7vw 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.reviews-eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: "Jost", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.reviews-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 3.8vw, 4rem);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  line-height: 1.04;
+}
+
+.reviews-heading .dimmed {
+  color: #6d6a66;
+}
+
+.reviews-navigation {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 3rem;
+}
+
+.nav-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Jost", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.nav-circle:hover {
+  border-color: #efede8;
+  color: #fff;
+}
+
+.nav-circle.active {
+  background: #efede8;
+  color: #000;
+  border-color: #efede8;
+}
+
+.review-body {
+  position: relative;
+  max-width: 640px;
+  min-height: 280px;
+}
+
+.review-copy-anim {
+  animation: reviewCopyReveal 0.55s ease both;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -34px;
+  right: 0;
+  font-size: 3rem;
+  color: #222;
+  z-index: 0;
+}
+
+.review-text {
+  position: relative;
+  z-index: 1;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  line-height: 1.8;
+  font-weight: 300;
+  color: #ccc;
+  margin-bottom: 2.2rem;
+  font-style: italic;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #222;
+  padding-top: 1.5rem;
+}
+
+.author-name {
+  font-family: "Jost", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.divider {
+  color: #444;
+}
+
+.star-rating {
+  display: flex;
+  gap: 4px;
+}
+
+.star-icon {
+  font-size: 0.8rem;
+  color: #ffcc33;
+}
+
+@keyframes reviewImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reviewImageFloat {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reviewCopyReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .reviews-section {
+    min-height: auto;
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .reviews-container {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-image-side {
+    height: 50vh;
+    padding: 0 1rem;
+  }
+
+  .reviews-content-side {
+    padding: 2.5rem 1.5rem 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-navigation {
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .review-body {
+    min-height: auto;
+  }
+
+  .review-footer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

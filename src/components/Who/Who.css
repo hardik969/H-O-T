@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap");
+
+:root {
+  /* Dark charcoal/almost black background for the industrial vibe */
+  --token-baacfa14-578e-4ad3-8953-8f669fae0759: rgb(18, 18, 18); 
+  
+  /* Gunmetal/Steel color for the card separator lines */
+  --token-17d0f1c9-3b54-4930-8206-897d8c758893: rgb(60, 60, 60); 
+  
+  /* White/Off-white for the main headings to pop against the dark */
+  --who-ink: #f5f5f5; 
+  
+  /* Light grey for the description text for readability */
+  --who-body: #a0a0a0; 
+}
+
+.ss-section {
+  position: relative;
+  background: var(--token-baacfa14-578e-4ad3-8953-8f669fae0759);
+  font-family: "Jost", sans-serif;
+  padding-bottom: 3rem;
+}
+
+.ss-heading-wrap {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw 1rem;
+  text-align: center;
+}
+
+.ss-heading {
+  color: var(--who-ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.who-scroll-stack {
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+}
+
+.who-scroll-stack .scroll-stack-inner {
+  padding: 3rem clamp(1.25rem, 4vw, 5rem) 16rem;
+}
+
+.who-stack-card {
+  background: var(--token-baacfa14-578e-4ad3-8953-8f669fae0759);
+  min-height: min(34rem, 72vh);
+  display: flex;
+  align-items: center;
+}
+
+/* who.css */
+
+.who-card {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  min-height: 72vh;
+  background-color: var(--token-baacfa14-578e-4ad3-8953-8f669fae0759);
+  /* REMOVE 'transform' from this list */
+  transition: opacity 0.35s ease; 
+   will-change: transform;
+}
+
+.who-card-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--token-17d0f1c9-3b54-4930-8206-897d8c758893);
+}
+
+.who-card-layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 400px) 1fr;
+  align-items: center;
+  column-gap: clamp(24px, 4vw, 56px);
+  width: 100%;
+  min-height: 72vh;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem clamp(24px, 5vw, 50px);
+}
+
+.who-card-title-wrap,
+.who-card-copy,
+.who-card-image-wrap {
+  width: 100%;
+}
+
+.who-card-title {
+  color: var(--who-ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 2.9vw, 2.75rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin: 0;
+}
+
+.who-card-image-frame {
+position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: #2a2a2a;
+}
+
+.who-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-position: center center;
+  object-fit: cover;
+}
+
+.who-card-description {
+  color: var(--who-body);
+  font-family: "Jost", sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  font-weight: 300;
+  line-height: 1.95;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .ss-heading-wrap {
+    height: auto;
+    min-height: 48vh;
+    padding: 5rem 1.5rem 1.5rem;
+  }
+
+  .who-scroll-stack .scroll-stack-inner {
+    padding: 1rem 1rem 9rem;
+  }
+
+  .who-stack-card {
+    min-height: auto;
+    padding: 1.5rem;
+    border-radius: 28px;
+  }
+
+  .who-card-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .who-card-title,
+  .who-card-description {
+    text-align: center;
+  }
+
+  .who-card-image-frame {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

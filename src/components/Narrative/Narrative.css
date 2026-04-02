@@ -1,0 +1,155 @@
+#narrative {
+  position: relative;
+  overflow: hidden;
+  /* Deep industrial charcoal with a subtle top-down glow */
+  background: 
+    radial-gradient(circle at top, rgba(255, 123, 0, 0.15), transparent 45%),
+    linear-gradient(180deg, #0f0f0f 0%, #171717 100%);
+  padding: clamp(100px, 15vw, 180px) clamp(24px, 8vw, 120px);
+  color: #ffffff;
+}
+
+/* Subtle "grain" or "steel" texture overlay (Optional but looks great) */
+#narrative::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+}
+
+.narrative-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+}
+
+.narrative-kicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  /* A glowing "hot metal" color */
+  color: #ff8c00;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.5));
+}
+
+.narrative-title {
+  margin: 0 auto 32px;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Scaled for better impact */
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  /* Removed fixed min-width to ensure it doesn't break mobile */
+  max-width: 1100px;
+}
+
+.narrative-lead {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #b0b0b0; /* Light grey for readability against dark */
+  font-family: "Jost", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Enhancing the Stats Section for a "Premium Tech" look */
+.narrative-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.narrative-stat {
+  min-width: 240px;
+  /* Border feels like a laser-cut steel edge */
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 32px 24px;
+  border-radius: 4px;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.narrative-stat:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 140, 0, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.narrative-stat .num {
+  color: #ff8c00; /* Forged orange */
+  font-family: "Jost", sans-serif; /* Cleaner than Bebas for luxury */
+  font-size: clamp(2.8rem, 4vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.narrative-stat .lbl {
+  margin-top: 12px;
+  color: #888;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Call to Action Link */
+.narrative-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 56px;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.narrative-link:hover {
+  background: #ff8c00;
+  border-color: #ff8c00;
+  color: #000;
+  box-shadow: 0 0 25px rgba(255, 140, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+  #narrative {
+    padding: 5rem 1.25rem;
+  }
+
+  .narrative-title {
+    font-size: 2.5rem;
+  }
+
+  .narrative-lead {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .narrative-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .narrative-stat {
+    width: 100%;
+    max-width: 400px;
+  }
+}

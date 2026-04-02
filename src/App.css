@@ -1,0 +1,90 @@
+.app-shell {
+  background: #000;
+  overflow-x: hidden;
+}
+
+.thrill-page-container {
+  background: #000;
+}
+
+/* 1. REMOVE THE EXTRA MARGIN
+   Setting this to exactly 100vh ensures that as soon as you finish 
+   one section, the next one is already starting its animation. */
+.stack-stage {
+  position: relative;
+  height: auto; 
+  width: 100%;
+}
+
+.stack-stage--linger {
+  min-height: 145vh;
+}
+
+.stack-stage--final {
+  min-height: 100vh;
+}
+
+.stack-panel {
+  position: sticky;
+  top: 0;
+  margin: 0 auto;
+  
+  /* width is managed by GSAP (starts at 200px) */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  /* CRITICAL: Tell the browser to optimize these for zero-lag */
+  will-change: width, transform, border-radius;
+  
+  /* Deeper shadow for the 'Azure' depth effect */
+  box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.7);
+}
+
+.panel-content {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .stack-stage--linger {
+    min-height: 120vh;
+  }
+
+  .stack-stage--final {
+    min-height: 100vh;
+  }
+
+  .panel-content {
+    min-height: auto;
+  }
+}
+
+/* Ensure content is always visible and centered during expansion */
+.stack-panel > * {
+  width: 100%;
+  min-width: 100vw;
+
+  flex-shrink: 0;
+}
+
+/* Theme Colors */
+.section-bone { background: #efede8; color: #111; }
+.section-dark { background: #111; color: #efede8; }
+
+/* Keep the footer at the very end */
+.footer-stage {
+  position: relative;
+  z-index: 20;
+  background: #111;
+  min-height: 100vh;
+}
+
+.stack-panel .thrill-polaroid {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}

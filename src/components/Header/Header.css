@@ -1,0 +1,79 @@
+/* Import the pixel-style font for the logo */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Inter:wght@400;600;700&display=swap');
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  /* Matching the beige paper background from the image */
+   background: linear-gradient(to bottom, rgba(10, 10, 10, 0.92), transparent);
+  backdrop-filter: blur(4px);
+}
+
+.site-logo {
+  color: #4b4545;
+  /* Pixelated aesthetic */
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Tight, professional spacing */
+}
+
+.site-nav a {
+  color: #3a2f2f;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.site-nav a:hover {
+  opacity: 0.5;
+}
+
+.nav-separator {
+  color: #5d4d4d;
+  font-weight: 300;
+  margin: 0 4px;
+}
+
+.site-nav-cta {
+  /* Making Book Now stand out slightly thicker */
+  font-weight: 800 !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 720px) {
+  .site-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .nav-separator {
+    display: none; /* Hide separator on mobile for better flow */
+  }
+}
