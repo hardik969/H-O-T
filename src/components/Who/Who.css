@@ -54,6 +54,9 @@
   min-height: min(34rem, 72vh);
   display: flex;
   align-items: center;
+  justify-content: center; /* Center the inner card content */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* who.css */
@@ -85,9 +88,12 @@
   column-gap: clamp(24px, 4vw, 56px);
   width: 100%;
   min-height: 72vh;
-  max-width: 1500px;
+  /* Ensure it's centered and doesn't exceed the viewport */
+  max-width: 1400px; 
   margin: 0 auto;
-  padding: 2rem clamp(24px, 5vw, 50px);
+  /* Use padding-inline to keep it away from edges */
+  padding: 2rem clamp(1rem, 5vw, 2rem);
+  box-sizing: border-box; /* Critical for layout math */
 }
 
 .who-card-title-wrap,
