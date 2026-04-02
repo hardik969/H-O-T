@@ -6,7 +6,7 @@ const socialLinks = ["Facebook", "Instagram", "Book", "Whatsapp"];
 
 export default function Footer() {
   return (
-    <footer className="footer-section">
+    <footer className="footer-section" id="contact">
       <div className="footer-shell">
         <div className="footer-top">
           <div className="footer-newsletter">

@@ -1,10 +1,10 @@
 import "./Header.css";
 
 const navItems = [
-  { href: "#projets", label: "Home" },
-  { href: "#agence", label: "About" },
-  { href: "#process", label: "Reviews" },
-  { href: "#shop", label: "Games" },
+  { href: "#home", label: "Home" },
+  { href: "#narrative", label: "About" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#games", label: "Games" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -20,7 +20,7 @@ export default function Header() {
           </a>
         ))}
         <span className="nav-separator">|</span>
-        <a href="#book" className="site-nav-cta">
+        <a href="#contact" className="site-nav-cta">
           BOOK NOW
         </a>
       </nav>

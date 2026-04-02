@@ -30,7 +30,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="thrill-hero-wrapper" ref={container}>
+    <section className="thrill-hero-wrapper" id="home" ref={container}>
       <div className="thrill-container">
         
       
